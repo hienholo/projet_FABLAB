@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau de Bord</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script defer src="/js/filtre.js"></script> <!-- Inclusion du fichier filtre.js -->
+</head>
+<body>
+    <%- include('static/header') %>
+    <main>
+        <section>
+            <h2><%= isAdmin ? "Historique des ouvertures" : "Historique de vos ouvertures" %></h2>
+            
+            <!-- Filtres -->
+            <div id="filters">
+                <% if (isAdmin) { %>
+                    <label for="filter-user">Utilisateur :</label>
+                    <select id="filter-user">
+                        <option value="">Tous les utilisateurs</option>
+                        <% users.forEach(user => { %>
+                            <option value="<%= user %>"><%= user %></option>
+                        <% }) %>
+                    </select>
+                <% } %>
+
+                <label for="filter-door">Porte :</label>
+                <select id="filter-door">
+                    <option value="">Toutes les portes</option>
+                    <% doors.forEach(door => { %>
+                        <option value="<%= door %>"><%= door %></option>
+                    <% }) %>
+                </select>
+
+                <button id="reset-filters">Réinitialiser</button>
+            </div>
+
+            <!-- Tableau de l'historique -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date et Heure</th>
+                        <th>Porte</th>
+                        <th>Utilisateur</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (history.length > 0) { %>
+                        <% let currentMonth = ""; %>
+                        <% history.forEach(entry => { 
+                            const entryMonth = new Date(entry.date_historique).toLocaleString('default', { month: 'long', year: 'numeric' });
+                            if (entryMonth !== currentMonth) {
+                                currentMonth = entryMonth; %>
+                                <!-- Ligne pour le mois -->
+                                <tr class="month-header">
+                                    <td colspan="3"><strong><%= currentMonth %></strong></td>
+                                </tr>
+                            <% } %>
+                            <!-- Ligne pour une entrée -->
+                            <tr data-user="<%= entry.nom_utilisateur %>" data-door="<%= entry.nom_porte %>">
+                                <td><%= entry.date_historique %></td>
+                                <td><%= entry.nom_porte %></td>
+                                <td><%= entry.nom_utilisateur %> <%= entry.prenom_utilisateur %></td>
+                            </tr>
+                        <% }) %>
+                    <% } else { %>
+                        <!-- Aucune donnée -->
+                        <tr><td colspan="3">Aucune ouverture enregistrée.</td></tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <%- include('static/footer') %>
+</body>
+</html>

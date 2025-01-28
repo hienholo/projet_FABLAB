@@ -1,0 +1,18 @@
+<header>
+    <nav>
+      <ul>
+        <li><a href="/">Accueil</a></li>
+        <% if (isLoggedIn) { %>
+          <li><a href="/dashboard">Dashboard</a></li>
+          <li><a href="/historique">Historique</a></li>
+          <% if (role === 'admin') { %>
+            <li><a href="/users">Gestion des utilisateurs</a></li>
+          <% } %>
+          <li><a href="/logout">Déconnexion</a></li>
+        <% } else { %>
+          <li><a href="/login">Connexion</a></li>
+        <% } %>
+      </ul>
+    </nav>
+  </header>
+  

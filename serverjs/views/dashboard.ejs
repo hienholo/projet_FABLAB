@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau de Bord</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('static/header'); %>
+  <main>
+    <section id="locks">
+      <h2>État des Serrures</h2>
+      <% if (locks && locks.length > 0) { %>
+        <% locks.forEach(lock => { %>
+          <div id="<%= lock.id_porte %>">
+            <p>
+              <%= lock.nom %> : 
+              <span class="status">rajouter l'état de la porte</span>
+            </p>
+            <button onclick="">Ouvrir/Fermer programmer le bouton</button>
+          </div>
+        <% }); %>
+      <% } else { %>
+        <p>Aucune porte trouvée.</p>
+      <% } %>
+    </section>
+    <section>
+      <h2>Cartes</h2>
+      <button onclick="">Ajouter une carte</button>
+    </section>
+  </main>
+  <%- include('static/footer'); %>
+</body>
+</html>

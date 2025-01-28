@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modification de l'utilisateur</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<%- include('static/header') %>
+<main>
+    <section>
+        <div class="class_form">
+            <h2>Modifier les informations de l'utilisateur</h2>
+            <form method="post" class="update_user" action="/edit_users">
+                <% if (errorMessage) { %>
+                    <p style="color: red;"><%= errorMessage %></p>
+                <% } %>
+
+                <label for="username">Nom d'utilisateur :</label>
+                <input type="text" id="username" name="username" value="<%= user.username %>" readonly><br>
+
+                <label for="nom">Nom :</label>
+                <input type="text" id="nom" name="nom" value="<%= user.nom %>" required><br>
+
+                <label for="prenom">Prénom :</label>
+                <input type="text" id="prenom" name="prenom" value="<%= user.prenom %>" required><br>
+                
+                <label for="mdp">Mot de passe (laissez vide pour ne pas changer) :</label>
+                <input type="password" id="mdp" name="mdp" value="<%= user.mdp %>" required><br>
+
+                <label for="date_debut">Date de début d'accès :</label>
+                <input type="date" id="date_debut" name="date_debut" value="<%= user.date_debut %>" required><br>
+
+                <label for="date_fin">Date de fin d'accès :</label>
+                <input type="date" id="date_fin" name="date_fin" value="<%= user.date_fin %>"><br>
+
+                <label for="role">Rôle :</label>
+                <select id="role" name="role" required>
+                    <% roles.forEach(role => { %>
+                        <option value="<%= role.id_role %>" <%= role.id_role === user.id_role ? 'selected' : '' %>>
+                            <%= role.nom %>
+                        </option>
+                    <% }) %>
+                </select><br>
+
+                <label for="carte">Carte :</label>
+                <select id="carte" name="carte" required>
+                    <% cartes.forEach(carte => { %>
+                        <option value="<%= carte.id_carte %>" <%= carte.id_carte === user.id_carte ? 'selected' : '' %>>
+                            <%= carte.nom %>
+                        </option>
+                    <% }) %>
+                </select><br>
+
+                <button type="submit" name="action" value="update">Mettre à jour</button>
+            </form>
+        </div>
+    </section>
+</main>
+<%- include('static/footer') %>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serrure Connectée</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('static/header', { isLoggedIn, role }) %>
+  <main>
+    <h1>Bienvenue sur le Système de Serrure Connectée</h1>
+    <p>Bonjour, <%= username %> !</p>
+    <p>Ce site vous permet de gérer et de superviser l'accès à votre bâtiment grâce à des serrures connectées.
+      <br> Les fonctionnalités disponibles varient en fonction de votre rôle.
+    </p>
+    <h3>Fonctionnalités principales :</h3>
+        <ul>
+            <li><strong>Dashboard :</strong> Visualisez et contrôlez l’état des serrures connectées.</li>
+            <li><strong>Historique :</strong> Consultez les actions effectuées sur les serrures.</li>
+            <li><strong>Gestion des utilisateurs :</strong> Ajoutez, modifiez ou supprimez des comptes.</li>
+        </ul>
+    <h3>Accès selon les rôles :</h3>
+      <ul>
+        <li><strong>Visiteur :</strong> Accès uniquement au tableau de bord des serrures.</li>
+        <li><strong>Utilisateur :</strong> Accès au tableau de bord et à son historique.</li>
+        <li><strong>Administrateur :</strong> Accès complet (tableau de bord, historique complet et gestion des utilisateurs).</li>
+      </ul>
+    <p>Pour des raisons de sécurité, pensez à vous déconnecter après utilisation.</p>
+  </main>
+  <%- include('static/footer'); %>
+</body>
+</html>

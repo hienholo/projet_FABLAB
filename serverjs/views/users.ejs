@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utilisateurs</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('static/header') %>
+    <main>
+        <section>
+            <h2>Liste des Utilisateurs</h2>
+            <% if (message) { %>
+                <p style="color: green;"><%= message %></p>
+            <% } %>
+    
+            <ul>
+                <% if (users && users.length > 0) { %>
+                    <% users.forEach(user => { %>
+                        <% const isExpired = user.date_fin && new Date(user.date_fin) < new Date(); %>
+                        <li class="<%= isExpired ? 'expired' : '' %>">
+                            <%= user.username %> - <%= user.nom %> 
+                            <% if (user.date_fin) { %> 
+                                : Du <%= user.date_debut %> au <%= user.date_fin %>
+                            <% } else { %>
+                                : Depuis <%= user.date_debut %>
+                            <% } %>
+                            
+                            <form method="POST" style="display:inline;">
+                                <input type="hidden" name="username" value="<%= user.username %>">
+                                <button type="submit" name="action" value="edit">Modifier</button>
+                            </form>
+                            
+                            <% if (user.desactive === 0) { %>
+                                <form method="POST" style="display:inline;">
+                                    <input type="hidden" name="username" value="<%= user.username %>">
+                                    <button type="submit" name="action" value="delete" onclick="return confirm('Voulez-vous vraiment désactiver cet utilisateur ?');">Désactiver</button>
+                                </form>
+                            <% } else { %>
+                                <form method="POST" style="display:inline;">
+                                    <input type="hidden" name="username" value="<%= user.username %>">
+                                    <button type="submit" name="action" value="reactive" onclick="return confirm('Voulez-vous vraiment résactiver cet utilisateur ?');">Résactiver</button>
+                                </form>
+                            <% } %>
+                        </li>
+                    <% }); %>
+                <% } else { %>
+                    <p>Aucun utilisateur trouvé.</p>
+                <% } %>
+            </ul>
+            
+    
+            <div class="class_form">
+                <h2>Ajouter un Nouvel Utilisateur</h2>
+                <% if (error_message) { %>
+                    <p style="color: red;"><%= error_message %></p>
+                <% } %>
+    
+                <form method="post">
+                    <label for="username">Nom d'utilisateur :</label>
+                    <input type="text" id="username" name="username" required><br>
+    
+                    <label for="nom">Nom :</label>
+                    <input type="text" id="nom" name="nom" required><br>
+    
+                    <label for="prenom">Prénom :</label>
+                    <input type="text" id="prenom" name="prenom" required><br>
+    
+                    <label for="password">Mot de passe :</label>
+                    <input type="password" id="password" name="mdp" required><br>
+    
+                    <label for="date_debut">Date de début d'accès :</label>
+                    <input type="date" id="date_debut" name="date_debut" value="<%= currentDate %>" required><br>
+    
+                    <label for="date_fin">Date de fin d'accès :</label>
+                    <input type="date" id="date_fin" name="date_fin"><br>
+    
+                    <label for="role">Rôle :</label>
+                    <select id="role" name="role" required>
+                        <% roles.forEach(role => { %>
+                            <option value="<%= role.id_role %>"><%= role.nom %></option>
+                        <% }); %>
+                    </select><br>
+    
+                    <label for="carte">Carte :</label>
+                    <select id="carte" name="carte" required>
+                        <% cartes.forEach(carte => { %>
+                            <option value="<%= carte.id_carte %>"><%= carte.nom %></option>
+                        <% }); %>
+                    </select><br>
+    
+                    <button type="submit" name="action" value="add">Ajouter</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <%- include('static/footer') %>
+</body>
+</html>

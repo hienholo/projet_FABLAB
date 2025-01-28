@@ -1,0 +1,138 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+nav {
+    background: #444;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin: 0 10px;
+    display: inline-block;
+}
+
+nav a:hover {
+    background-color: #007bff;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.class_form {
+    display: block;
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+    margin: 30px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.class_form h2 {
+    text-align: center; 
+}
+.class_form button {
+    display: block; 
+    margin: 20px auto 0; 
+}
+main{
+    margin:  0 0 0 1% ;
+}
+
+form label {
+    margin-bottom: 5px;
+    font-size: 1.1em;
+}
+form input {
+    padding: 8px;
+    margin-bottom: 15px;
+    width: 250px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.welcome-message { 
+    margin: 10px 10px 0 10px;
+    font-size: 1.1em;
+}
+
+.welcome-message strong {
+    color: #007bff;
+    font-weight: bold;
+}
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #333;
+    color: #fff;
+    margin-top: auto;
+}
+
+table {
+    width: 95%;
+    border-collapse: collapse;
+    margin: 20px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+th {
+    background-color: #003d7d; 
+    color: white; 
+    text-align: left;
+    padding: 12px 15px;
+    font-size: 16px;
+}
+
+td {
+    background-color: #f9f9f9; 
+    padding: 10px 15px;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+}
+
+th, td {
+    border-right: 1px solid #ddd;
+}
+
+td[colspan='3'] {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+}
+
+.expired {
+    color: red;
+}
