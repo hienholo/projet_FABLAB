@@ -41,14 +41,14 @@ Future<List<UserModel>> getUsersApi(BuildContext context) async {
   }
 }
 
-class UsersPage extends StatefulWidget {
-  const UsersPage({super.key});
+class OpeningDoor extends StatefulWidget {
+  const OpeningDoor({super.key});
 
   @override
-  State<UsersPage> createState() => _UsersPageState();
+  State<OpeningDoor> createState() => _OpeningDoorState();
 }
 
-class _UsersPageState extends State<UsersPage> {
+class _OpeningDoorState extends State<OpeningDoor> {
   List<UserModel> users = [];
   List<UserModel> filteredUsers = [];
   final TextEditingController filterController = TextEditingController();
@@ -79,7 +79,7 @@ class _UsersPageState extends State<UsersPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Users')),
+      appBar: AppBar(title: const Text('Portes Ouverts')),
       body: SafeArea(
         child: Column(
           children: [
@@ -89,7 +89,7 @@ class _UsersPageState extends State<UsersPage> {
                 controller: filterController,
                 onChanged: filterUsersByName,
                 decoration: InputDecoration(
-                  hintText: 'Search By Name',
+                  hintText: 'Recherche',
                   prefixIcon: const Icon(Icons.search),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(25),

@@ -3,7 +3,7 @@ import 'package:fablabs7/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:icon_badge/icon_badge.dart';
 import 'package:fablabs7/constaints.dart';
-import 'package:fablabs7/models/user_model.dart';
+import 'package:fablabs7/models/userModel.dart';
 import 'package:fablabs7/pages/httpRequest.dart';
 import 'package:fablabs7/theme/colors.dart';
 import 'package:slidable_button/slidable_button.dart';
@@ -25,7 +25,7 @@ class Lock {
 }
 
 class LockPage extends StatefulWidget {
-  const LockPage({Key? key}) : super(key: key);
+  const LockPage({super.key});
 
   @override
   State<LockPage> createState() => _LockState();
@@ -34,7 +34,7 @@ class LockPage extends StatefulWidget {
 class _LockState extends State<LockPage> {
   String result = "";
 
-  Lock _lock = Lock(lockState: true, lockImage: LOCK_CLOSED_IMAGE);
+  final Lock _lock = Lock(lockState: true, lockImage: LOCK_CLOSED_IMAGE);
 
   unlock() {
     setState(() {
@@ -95,7 +95,7 @@ class _LockState extends State<LockPage> {
           children: [
             Container(
               child: IconBadge(
-                icon: Icon(Icons.refresh),
+                icon: const Icon(Icons.refresh),
                 itemCount: 0,
                 badgeColor: Colors.red,
                 itemColor: mainFontColor,
@@ -106,35 +106,35 @@ class _LockState extends State<LockPage> {
                 },
               ),
             ),
-            Container(
+            SizedBox(
               width: 250,
               height: 250,
               child: _lock.lockState
-                  ? Icon(
+                  ? const Icon(
                       Icons.lock,
                       size: 250,
-                      color: mainFontColor,
+                      color: Color.fromARGB(255, 255, 132, 31),
                     )
-                  : Icon(
+                  : const Icon(
                       Icons.lock_open,
                       size: 250,
-                      color: mainFontColor,
+                      color: Color.fromARGB(255, 43, 255, 24),
                     ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             Container(
-              padding: EdgeInsets.all(16),
-              margin: EdgeInsets.symmetric(horizontal: 25),
+              padding: const EdgeInsets.all(16),
+              margin: const EdgeInsets.symmetric(horizontal: 25),
               child: HorizontalSlidableButton(
                 width: 400,
                 height: 60,
                 buttonWidth: 100.0,
-                color: mainFontColor,
+                color: const Color.fromARGB(255, 73, 73, 73),
                 buttonColor: buttoncolor,
                 dismissible: false,
-                label: Center(
+                label: const Center(
                   child: Text(
                     "Slide Me",
                     style: TextStyle(
@@ -150,7 +150,7 @@ class _LockState extends State<LockPage> {
                     children: [
                       Container(
                         padding: const EdgeInsets.only(left: 25),
-                        child: Text(
+                        child: const Text(
                           "Lock",
                           style: TextStyle(
                               color: Colors.white,
@@ -160,7 +160,7 @@ class _LockState extends State<LockPage> {
                       ),
                       Container(
                         padding: const EdgeInsets.only(right: 25),
-                        child: Text(
+                        child: const Text(
                           "Unlock",
                           style: TextStyle(
                               color: Colors.white,
@@ -173,23 +173,25 @@ class _LockState extends State<LockPage> {
                 ),
                 onChanged: (position) {
                   setState(() {
-                    if (false == false) {
-                      result = 'You are not allowed to Open Or Close The Lock';
-                    } else {
+                  
                       if (position == SlidableButtonPosition.start) {
+                         print("open");
+                        lock();
                         /*AuthenticationProvider.changeLockState("lock")
                             .then((value) => {
                                   if (value != null)
                                     {lock(), result = 'Lock is closed'}
                                 });*/
                       } else if (position == SlidableButtonPosition.end) {
+                        print("open");
+                        unlock();
                        /* AuthenticationProvider.changeLockState("unlock")
                             .then((value) => {
                                   if (value != null)
                                     {unlock(), result = 'Lock is opened'}
                                 });*/
                       }
-                    }
+                  
                   });
                 },
               ),
@@ -198,17 +200,17 @@ class _LockState extends State<LockPage> {
               result,
               style: TextStyle(color: lockColor, fontSize: 16),
             ),
-            SizedBox(height: 20),
-            Container(
+            const SizedBox(height: 20),
+            SizedBox(
               width: 50,
               height: 50,
               child: true == true
-                  ? Icon(
+                  ? const Icon(
                       Icons.verified,
                       size: 50,
                       color: Colors.green,
                     )
-                  : Icon(
+                  : const Icon(
                       Icons.dangerous,
                       size: 50,
                       color: red,

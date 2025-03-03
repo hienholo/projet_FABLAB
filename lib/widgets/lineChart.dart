@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fablabs7/theme/colors.dart';
 
 class LineChartSample extends StatefulWidget {
-  const LineChartSample({Key? key}) : super(key: key);
+  const LineChartSample({super.key});
 
   @override
   State<LineChartSample> createState() => _LineChartState();
@@ -133,7 +133,7 @@ class _LineChartState extends State<LineChartSample> {
 
   LineChartData mainData() {
     return LineChartData(
-      gridData: FlGridData(
+      gridData: const FlGridData(
         show: false,
         drawVerticalLine: false,
         horizontalInterval: 1,
@@ -141,10 +141,10 @@ class _LineChartState extends State<LineChartSample> {
       ),
       titlesData: FlTitlesData(
         show: true,
-        rightTitles: AxisTitles(
+        rightTitles: const AxisTitles(
           sideTitles: SideTitles(showTitles: false),
         ),
-        topTitles: AxisTitles(
+        topTitles: const AxisTitles(
           sideTitles: SideTitles(showTitles: false),
         ),
         bottomTitles: AxisTitles(
@@ -189,7 +189,7 @@ class _LineChartState extends State<LineChartSample> {
           ),
           barWidth: 5,
           isStrokeCapRound: true,
-          dotData: FlDotData(
+          dotData: const FlDotData(
             show: true,
           ),
           belowBarData: BarAreaData(
@@ -208,21 +208,21 @@ class _LineChartState extends State<LineChartSample> {
 
   LineChartData avgData() {
     return LineChartData(
-      lineTouchData: LineTouchData(enabled: false),
+      lineTouchData: const LineTouchData(enabled: false),
       gridData: FlGridData(
         show: true,
         drawHorizontalLine: true,
         verticalInterval: 1,
         horizontalInterval: 1,
         getDrawingVerticalLine: (value) {
-          return FlLine(
-            color: const Color(0xff37434d),
+          return const FlLine(
+            color: Color(0xff37434d),
             strokeWidth: 1,
           );
         },
         getDrawingHorizontalLine: (value) {
-          return FlLine(
-            color: const Color(0xff37434d),
+          return const FlLine(
+            color: Color(0xff37434d),
             strokeWidth: 1,
           );
         },
@@ -245,10 +245,10 @@ class _LineChartState extends State<LineChartSample> {
             interval: 1,
           ),
         ),
-        topTitles: AxisTitles(
+        topTitles: const AxisTitles(
           sideTitles: SideTitles(showTitles: false),
         ),
-        rightTitles: AxisTitles(
+        rightTitles: const AxisTitles(
           sideTitles: SideTitles(showTitles: false),
         ),
       ),
@@ -282,7 +282,7 @@ class _LineChartState extends State<LineChartSample> {
           ),
           barWidth: 5,
           isStrokeCapRound: true,
-          dotData: FlDotData(
+          dotData: const FlDotData(
             show: false,
           ),
           belowBarData: BarAreaData(

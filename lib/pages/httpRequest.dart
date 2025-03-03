@@ -1,6 +1,7 @@
 import 'dart:convert';
+import 'package:fablabs7/config.dart';
 import 'package:fablabs7/constaints.dart';
-import 'package:fablabs7/models/user_model.dart';
+import 'package:fablabs7/models/userModel.dart';
 import 'package:http/http.dart' as http;
 
 class AuthenticationProvider {
@@ -21,7 +22,7 @@ class AuthenticationProvider {
     try {
       dynamic response = await makeAuthenticationRequest(username, password);
       _token = response['token'];
-      print('_token = ' + _token!);
+      print('_token = ${_token!}');
     } catch (error) {
       print("Login error: $error");
       return null;
@@ -31,7 +32,7 @@ class AuthenticationProvider {
 
   Future<dynamic> makeAuthenticationRequest(String username, String password) async {
     final response = await http.post(
-      Uri.parse(server + 'login'),
+      Uri.parse('${BaseUrl}login'),
       headers: <String, String>{
         "Content-Type": "application/json",
       },
@@ -54,11 +55,14 @@ Future<Map<String, dynamic>> addUser(
   String password,
   String nom,
   String prenom,
+  String dateDebut,
+  String dateFin,
   String role,
   String idCarte,
+  String action
 ) async {
   final response = await http.post(
-    Uri.parse('http://192.168.221.249:3000/users/add'),
+    Uri.parse('${BaseUrl}users/add'),
     headers: {'Content-Type': 'application/json'},
     body: jsonEncode({
       'username': username,
@@ -68,10 +72,11 @@ Future<Map<String, dynamic>> addUser(
       'id_role': role,
       'id_carte': idCarte,
       'date_debut': DateTime.now().toIso8601String(),
+      'action':"add"
     }),
   );
 
-  return jsonDecode(response.body);
+ return jsonDecode(response.body);
 }
 
 

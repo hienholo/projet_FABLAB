@@ -1,11 +1,13 @@
-import 'package:fablabs7/models/user_model.dart';
+import 'package:fablabs7/models/userModel.dart';
 
-final String LOCK_CLOSED_IMAGE = "closedLock.png";
-final String LOCK_OPENED_IMAGE = "openedLock.png";
-final int STATUS_OK = 200;
-final int STATUS_UNAUTHORIZED = 401;
-final int STATUS_FORBIDEN = 403;
-final String server = "http://192.168.221.249:3000/";
+const String LOCK_CLOSED_IMAGE = "closedLock.png";
+const String LOCK_OPENED_IMAGE = "openedLock.png";
+const int STATUS_OK = 200;
+const int STATUS_UNAUTHORIZED = 401;
+const int STATUS_FORBIDEN = 403;
+const  String BaseUrl= 'http://192.168.148.249:3000/';
+
+
 
 
 List<UserModel> defaultUsers = [

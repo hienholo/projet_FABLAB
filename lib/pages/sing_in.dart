@@ -71,18 +71,18 @@ class _Sing_InState extends State<Sing_In> {
 
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => DashboardPage()),
+            MaterialPageRoute(builder: (context) => const DashboardPage()),
           );
         } else {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => LockPage()),
+            MaterialPageRoute(builder: (context) => const LockPage()),
           );
         }
       } else {
         
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Échec de la connexion. Vérifiez vos identifiants.')),
+          const SnackBar(content: Text('Échec de la connexion. Vérifiez vos identifiants.')),
         );
       }
     } catch (e) {
@@ -124,7 +124,7 @@ class _Sing_InState extends State<Sing_In> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(16),
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     color: Colors.black26,
                     blurRadius: 8,
@@ -135,11 +135,11 @@ class _Sing_InState extends State<Sing_In> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "Login Now",
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
                     controller: usernameController,
                     decoration: InputDecoration(
@@ -147,7 +147,7 @@ class _Sing_InState extends State<Sing_In> {
                       errorText: usernameError,
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
                     controller: passwordController,
                     obscureText: true,
@@ -156,22 +156,22 @@ class _Sing_InState extends State<Sing_In> {
                       errorText: passwordError,
                     ),
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.black,
-                          padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
+                          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
                           ),
                         ),
                         onPressed: isLoading ? null : _handleLogin,
                         child: isLoading
-                            ? CircularProgressIndicator(color: Colors.white)
-                            : Text(
+                            ? const CircularProgressIndicator(color: Colors.white)
+                            : const Text(
                                 "Login Now",
                                 style: TextStyle(color: Colors.white),
                               ),
@@ -181,7 +181,7 @@ class _Sing_InState extends State<Sing_In> {
                           // Action pour "Forgot Passcode"
                           Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(builder: (context) => DashboardPage()),
+                          MaterialPageRoute(builder: (context) => const DashboardPage()),
                         );
                         },
                         child: Text(

@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      showSemanticsDebugger: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         
@@ -45,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
+    return const Scaffold(
   
       body: Center(
         // Center is a layout widget. It takes a single child and positions it

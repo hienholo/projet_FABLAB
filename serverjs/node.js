@@ -4,6 +4,7 @@ const jwt = require('jwt-simple');
 const bcrypt = require('bcryptjs');
 const bodyParser = require('body-parser');
 
+
 const app = express();
 app.use(bodyParser.json());
 
@@ -14,9 +15,10 @@ const db = new sqlite3.Database('fablab.db', (err) => {
 });
 
 // Clé secrète JWT
-const SECRET_KEY = 'Md';
 
-// 📌 Route Login
+const SECRET_KEY = '111011101110111';
+
+//  Route Login
 app.post('/login', (req, res) => {
     const { username, mdp } = req.body;
     db.get('SELECT * FROM utilisateur WHERE username = ?', [username], (err, user) => {
@@ -29,7 +31,7 @@ app.post('/login', (req, res) => {
     });
 });
 
-// 📌 Route Protégée
+// Route Protégée
 app.get('/protected', (req, res) => {
     const token = req.headers['authorization']?.split(' ')[1];
     if (!token) return res.status(401).json({ error: 'Token manquant' });
@@ -47,5 +49,5 @@ app.get('/protected', (req, res) => {
 
 // Démarrer le serveur
 app.listen(3000, () => {
-    console.log('Serveur démarré sur http://192.168.221.249:3000');
+    console.log('Serveur démarré sur http://'+config.ip+':3000');
 });

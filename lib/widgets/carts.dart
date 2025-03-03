@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DashboardCart extends StatefulWidget {
-  const DashboardCart({Key? key}) : super(key: key);
+  const DashboardCart({super.key});
 
   @override
   State<DashboardCart> createState() => _DashboardCartState();
